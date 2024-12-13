@@ -1,3 +1,4 @@
+import { login, something } from "../services";
 import { useDispatch, useSelector } from "react-redux";
 
 import { update } from "../store/action/userInfo";
@@ -9,11 +10,23 @@ const Demo = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(update({ name: 444 }));
-    console.log("lfsz", 444444);
   }, []);
-  console.log("lfsz", 2223);
-
-  return <div>{userInfo?.name}</div>;
+  const clickHandle = async () => {
+    const { data } = await login.post({ username: 1 });
+    if (data?.token) {
+      localStorage.token = data?.token;
+    }
+  };
+  const someHandle = async () => {
+    const data = await something.post();
+    console.log("lfsz", data);
+  };
+  return (
+    <>
+      <div onClick={clickHandle}>{userInfo?.name}</div>
+      <div onClick={someHandle}>{userInfo?.name}</div>
+    </>
+  );
 };
 
 export default Demo;
