@@ -17,8 +17,6 @@ const easyRequestInstance = new easyRequest({
   ],
   response: [
     (response: any) => {
-      console.log("lfsz", response);
-
       if (response.status !== 200) {
         message.error("服务异常");
       } else if (!response.data.success) {
