@@ -1,0 +1,18 @@
+@use "@/style/index.scss";
+.profile-page {
+  padding: 0 16px 0 32px;
+  &-top-form {
+    display: flex;
+    .ant-form {
+      margin-right: 80px;
+    }
+  }
+  &-bottom-form {
+  }
+  .ant-form {
+    flex: 1;
+    label {
+      color: var(--font-color) !important;
+    }
+  }
+}

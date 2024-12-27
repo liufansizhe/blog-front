@@ -1,5 +1,66 @@
-@import "@/style/index.scss";
+@use "@/style/index.scss";
 .blog-head {
   height: 64px;
   background: var(--head-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--head-border-bottom);
+}
+.ant-avatar {
+  border: 1px solid var(--head-avatar);
+  cursor: pointer;
+}
+.ant-drawer-content-wrapper {
+  width: 320px !important;
+}
+.ant-drawer-mask {
+  background: var(--drawer-mask) !important;
+}
+.avatar-drawer {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background: var(--drawer-bg) !important;
+  border-left: 1px solid var(--head-border-bottom);
+
+  .ant-drawer-body {
+    padding: 16px 6px;
+    .avatar-drawer-head {
+      color: var(--font-color);
+      font-size: var(--font-size);
+      font-weight: var(--font-weight);
+    }
+    .avatar-drawer-head {
+      padding: 0 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-left {
+        display: flex;
+        align-items: center;
+        .info {
+          margin-left: 8px;
+          .nickname,
+          .account {
+            overflow: hidden; //溢出隐藏
+            text-overflow: ellipsis; //溢出部分显示为省略号
+            white-space: nowrap; //不换行
+            max-width: 150px;
+          }
+        }
+      }
+      &-right {
+        svg {
+          cursor: pointer;
+          &:hover {
+            path {
+              fill: var(--error);
+            }
+          }
+        }
+      }
+    }
+  }
 }

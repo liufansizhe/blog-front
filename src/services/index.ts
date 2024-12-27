@@ -29,6 +29,10 @@ const easyRequestInstance = new easyRequest({
       if (response.status !== 401) {
         message.error("服务异常");
       } else if (!response.data.success) {
+        if (window.location.pathname !== "/") {
+          window.location.pathname = "/";
+        }
+        localStorage.removeItem("token");
         message.error(response.data.message);
       }
     },
@@ -38,11 +42,15 @@ const easyRequestInstance = new easyRequest({
     { type: "get", url: "getPublicKey", name: "getPublicKey" },
     { type: "get", url: "getUserInfo", name: "getUserInfo" },
     { type: "post", url: "register", name: "register" },
+    { type: "post", url: "logout", name: "logout" },
+    { type: "post", url: "setUserInfo", name: "setUserInfo" },
   ],
 });
 const apiList = easyRequestInstance.getApi();
 
 export const Login = apiList.Login;
-export const getPublicKey = apiList.getPublicKey;
-export const register = apiList.register;
-export const getUserInfo = apiList.getUserInfo;
+export const GetPublicKey = apiList.getPublicKey;
+export const Register = apiList.register;
+export const GetUserInfo = apiList.getUserInfo;
+export const Logout = apiList.logout;
+export const SetUserInfo = apiList.setUserInfo;

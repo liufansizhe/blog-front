@@ -5,7 +5,47 @@ body,
   margin: 0;
   height: 100%;
   width: 100%;
+  background: var(--body-bg);
+  .icon {
+    height: 1em;
+    width: 1em;
+  }
+  color: var(--font-color);
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 html[data-theme="default"] {
+  --font-color: rgba(255, 255, 255);
+  --font-size: 14px;
+  --font-weight: 400;
   --head-bg: #010409;
+  --head-avatar: #fff;
+  --head-border-bottom: #b7bdc8;
+  --body-bg: #010409;
+  --drawer-bg: rgba(21, 27, 35);
+  --drawer-item-hover-bg: #2f3742;
+  --drawer-mask: #d1d7e066;
+  --error: #ff8080;
+  --active-bg: #409eff;
+  --font-color-second-title: #b7bdc8;
+  --input-bg: #151b23;
+  --green-btn-bg: #006222;
+  --green-btn-border: #4ae168;
+  --green-btn-hover-bg: #08792b;
+}
+.ant-input-outlined {
+  background: var(--input-bg) !important;
+  color: var(--font-color);
+  &:focus {
+    background: none !important;
+    border-color: var(--active-bg);
+  }
+  &:hover {
+    background: var(--input-bg);
+  }
+}
+
+.anticon-close-circle {
+  color: var(--font-color);
 }

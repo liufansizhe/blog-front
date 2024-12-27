@@ -1,10 +1,12 @@
 // 创建计数器切片slice
 // 导入创建切片的函数
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+import { GetUserInfo } from "@/services";
 
 // 定义初始化状态
-const initialState = {};
+const initialState = { pubKey: "" };
 // 创建切片
 const userInfoSlice = createSlice({
   // 切片名称
@@ -18,10 +20,25 @@ const userInfoSlice = createSlice({
       state = { ...state, ...action.payload };
       return state;
     },
+    clear: (state) => {
+      state = { pubKey: state?.pubKey };
+      return state;
+    },
+  },
+  extraReducers: (builder: any) => {
+    builder.addCase(storeGetUserInfo.fulfilled, (state: any, data: any) => {
+      state = { ...state, ...data.payload };
+      return state;
+    });
   },
 });
 
 // 导出动作
-export const { update } = userInfoSlice.actions;
+export const { update, clear } = userInfoSlice.actions;
+
+export const storeGetUserInfo = createAsyncThunk("fetch", async () => {
+  const { data } = await GetUserInfo();
+  return data;
+});
 // 导出处理器
 export default userInfoSlice.reducer;

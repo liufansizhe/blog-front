@@ -1,0 +1,48 @@
+@use "@/style/index.scss";
+.setting-page {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .setting-body {
+    height: 100%;
+    width: 67%;
+    max-width: 1280px;
+    display: flex;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    .setting-aside {
+      width: 300px;
+      &-head {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 24px;
+        height: 48px;
+        &-info {
+          height: 100%;
+          margin-left: 16px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          div:first-child {
+            font-weight: 600;
+            font-size: 20px;
+            span {
+              font-size: 16px;
+              color: var(--font-color-second-title);
+            }
+          }
+          div:last-child {
+            font-size: 14px;
+            color: var(--font-color-second-title);
+          }
+        }
+      }
+    }
+    .setting-content {
+      flex: 1;
+    }
+  }
+}

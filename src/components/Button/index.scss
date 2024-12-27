@@ -1,0 +1,14 @@
+@use "@/style/index.scss";
+.green-button {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  background: var(--green-btn-bg);
+  border: 1px solid var(--green-btn-border);
+  letter-spacing: 1px;
+  font-weight: 700;
+  &:hover {
+    background: var(--green-btn-hover-bg);
+  }
+}

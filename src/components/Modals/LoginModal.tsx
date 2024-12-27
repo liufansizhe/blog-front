@@ -1,14 +1,16 @@
-import { Button, Form, Input, Modal } from "antd";
-import { EmailPass, PasswordPass } from "../../utils/validate";
-import { Login, register } from "../../services";
+import { AccountPass, PasswordPass } from "../../utils/validate";
+import { Button, Form, Input, Modal, message } from "antd";
+import { GetUserInfo, Login, Logout, Register } from "../../services";
 import { useDispatch, useSelector } from "react-redux";
 
 import { encrypt } from "../../utils/encrypt";
 import { setVisible } from "../../store/action/modal";
+import { update } from "@/store/action/userInfo";
 import { useState } from "react";
 
 const LoginModal = () => {
   const [isLogin, setIsLogin] = useState<boolean>(true);
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const { loginModal } = useSelector((state: any) => state.modal);
   const { pubKey } = useSelector((state: any) => state.userInfo);
@@ -31,11 +33,15 @@ const LoginModal = () => {
       return;
     }
     form.validateFields().then(async (res) => {
-      const { email, password } = res;
+      const { account, password } = res;
       const data = await encrypt(password, pubKey);
-      const result = await Login({ email, password: data });
+      const result = await Login({ account, password: data });
       if (result?.data?.token) {
         localStorage.token = result?.data?.token;
+        const userInfo = await GetUserInfo();
+        dispatch(update({ ...userInfo?.data }));
+        dispatch(setVisible({ type: "loginModal", value: false }));
+        form.resetFields();
       }
     });
   };
@@ -54,11 +60,25 @@ const LoginModal = () => {
       return;
     }
     form.validateFields().then(async (res) => {
-      const { email, password } = res;
+      const { account, password } = res;
       const data = await encrypt(password, pubKey);
-      const result = await register({ email, password: data });
-      console.log("lfsz", result);
+      const result = await Register({ account, password: data });
+      if (result.success) {
+        messageApi.open({
+          type: "success",
+          content: "注册成功",
+        });
+        dispatch(setVisible({ type: "loginModal", value: false }));
+        form.resetFields();
+      }
     });
+  };
+  const getInfoHandle = async () => {
+    const data = await GetUserInfo();
+    console.log("lfsz", data);
+  };
+  const logoutHandle = async () => {
+    Logout();
   };
   return (
     <Modal
@@ -67,13 +87,14 @@ const LoginModal = () => {
       onCancel={closeHandle}
       footer={null}
     >
+      {contextHolder}
       <Form form={form} name={isLogin ? "login" : "register"}>
         <Form.Item
-          name='email'
+          name='account'
           validateTrigger='onBlur'
-          rules={[{ validator: EmailPass }]}
+          rules={[{ validator: AccountPass }]}
         >
-          <Input placeholder='邮箱' allowClear />
+          <Input placeholder='账号' allowClear />
         </Form.Item>
         <Form.Item
           name='password'
@@ -94,6 +115,8 @@ const LoginModal = () => {
       </Form>
       <Button onClick={clickHandle}>{isLogin ? "登录" : "账密登录"}</Button>
       <Button onClick={registerHandle}>{isLogin ? "前往注册" : "注册"}</Button>
+      <Button onClick={getInfoHandle}>获取</Button>
+      <Button onClick={logoutHandle}>登出</Button>
     </Modal>
   );
 };
