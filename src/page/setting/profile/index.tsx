@@ -1,10 +1,10 @@
 import "./index.scss";
 
 import { Avatar, Form, Input } from "antd";
-import { EmailPass, NickNamePass } from "@/utils/validate";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "@/components/Button";
+import { NickNamePass } from "@/utils/validate";
 import { SetUserInfo } from "@/services";
 import { storeGetUserInfo } from "@/store/action/userInfo";
 import { useEffect } from "react";
@@ -40,15 +40,11 @@ const Profile = () => {
           >
             <Input allowClear autoComplete='off'></Input>
           </Form.Item>
-          <Form.Item
-            label='邮箱'
-            name='email'
-            rules={[{ validator: EmailPass }]}
-          >
-            <Input allowClear autoComplete='off'></Input>
+          <Form.Item label='邮箱' name='email'>
+            <Input allowClear autoComplete='off' disabled></Input>
           </Form.Item>
         </Form>
-        <Avatar size={200} src={userInfo.avatar} />
+        <Avatar src={userInfo.avatar} />
       </div>
       <div className='profile-page-bottom-form'>
         <Form layout='vertical' form={formBottom}>

@@ -18,7 +18,7 @@ const easyRequestInstance = new easyRequest({
   response: [
     (response: any) => {
       if (response.status !== 200) {
-        message.error("服务异常");
+        message.error(response.data.message ?? "服务异常");
       } else if (!response.data.success) {
         message.error(response.data.message);
       }
@@ -27,7 +27,7 @@ const easyRequestInstance = new easyRequest({
     (err) => {
       const { response } = err;
       if (response.status !== 401) {
-        message.error("服务异常");
+        message.error(response.data.message ?? "服务异常");
       } else if (!response.data.success) {
         if (window.location.pathname !== "/") {
           window.location.pathname = "/";
@@ -44,6 +44,9 @@ const easyRequestInstance = new easyRequest({
     { type: "post", url: "register", name: "register" },
     { type: "post", url: "logout", name: "logout" },
     { type: "post", url: "setUserInfo", name: "setUserInfo" },
+    { type: "get", url: "getCode", name: "getCode" },
+    { type: "post", url: "publishArticle", name: "publishArticle" },
+    { type: "get", url: "getHomeArticleList", name: "getHomeArticleList" },
   ],
 });
 const apiList = easyRequestInstance.getApi();
@@ -54,3 +57,6 @@ export const Register = apiList.register;
 export const GetUserInfo = apiList.getUserInfo;
 export const Logout = apiList.logout;
 export const SetUserInfo = apiList.setUserInfo;
+export const GetCode = apiList.getCode;
+export const PublishArticle = apiList.publishArticle;
+export const GetHomeArticleList = apiList.getHomeArticleList;

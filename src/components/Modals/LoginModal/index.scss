@@ -1,0 +1,36 @@
+.login-modal {
+  .ant-modal-content {
+    background-color: var(--login-bg);
+    border: 1px solid var(--login-border);
+    .ant-modal-title {
+      background-color: var(--login-bg);
+      color: var(--font-color);
+    }
+    .ant-modal-close {
+      color: var(--font-color);
+    }
+    .btn-list {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .anticon-close-circle,
+    .anticon-eye-invisible {
+      color: var(--font-color) !important;
+    }
+    .codeRow {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      .ant-form-item {
+        flex: 5;
+      }
+      .base-button {
+        flex: 3;
+        margin-left: 10px;
+      }
+    }
+  }
+}

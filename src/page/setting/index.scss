@@ -20,15 +20,24 @@
         width: 100%;
         margin-bottom: 24px;
         height: 48px;
+        .ant-avatar {
+          height: 48px;
+          width: 48px;
+        }
         &-info {
           height: 100%;
           margin-left: 16px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          overflow: hidden;
+          flex: 1;
           div:first-child {
             font-weight: 600;
             font-size: 20px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
             span {
               font-size: 16px;
               color: var(--font-color-second-title);

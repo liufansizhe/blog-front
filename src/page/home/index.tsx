@@ -3,7 +3,7 @@ import "./index.scss";
 import { GetPublicKey, GetUserInfo } from "@/services";
 
 import Head from "@/components/Head";
-import LoginModal from "@/components/Modals/LoginModal";
+import LoginModal from "@/components/Modals/LoginModal/index";
 import { Outlet } from "react-router-dom";
 import { update } from "@/store/action/userInfo";
 import { useDispatch } from "react-redux";

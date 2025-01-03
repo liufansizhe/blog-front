@@ -8,6 +8,27 @@
   padding: 16px;
   box-sizing: border-box;
   border-bottom: 1px solid var(--head-border-bottom);
+  .right {
+    display: flex;
+    align-items: center;
+    .ant-avatar {
+      height: 32px;
+      width: 32px;
+    }
+  }
+  .action {
+    height: 30px;
+    width: 30px;
+    box-sizing: border-box;
+    margin-right: 10px;
+    padding: 7px;
+    border: 1px solid var(--head-action-color);
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background: var(--drawer-item-hover-bg);
+    }
+  }
 }
 .ant-avatar {
   border: 1px solid var(--head-avatar);
@@ -19,9 +40,22 @@
 .ant-drawer-mask {
   background: var(--drawer-mask) !important;
 }
+.ant-drawer-left {
+  .avatar-drawer {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    .ant-drawer-body div:nth-child(2) {
+      border-top: none;
+    }
+  }
+}
+.ant-drawer-right {
+  .avatar-drawer {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+}
 .avatar-drawer {
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
   background: var(--drawer-bg) !important;
   border-left: 1px solid var(--head-border-bottom);
 
@@ -37,6 +71,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      .ant-avatar {
+        height: 32px;
+        width: 32px;
+      }
       &-left {
         display: flex;
         align-items: center;

@@ -1,14 +1,44 @@
-@use "@/style/index.scss";
-.green-button {
-  display: inline-flex;
-  padding: 8px 12px;
-  border-radius: 6px;
+.base-button {
   cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 5px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+}
+.green-button {
   background: var(--green-btn-bg);
-  border: 1px solid var(--green-btn-border);
-  letter-spacing: 1px;
-  font-weight: 700;
   &:hover {
     background: var(--green-btn-hover-bg);
   }
+}
+.login-button,
+.register-button {
+  margin-top: 10px;
+}
+.login-button {
+  background: var(--green);
+  &:hover {
+    background: var(--green-btn-hover-bg);
+  }
+}
+.register-button {
+  background: var(--orange);
+  &:hover {
+    background: var(--orange-btn-hover-bg);
+  }
+}
+.default-button {
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  &:hover {
+    background: var(--btn-hover-bg);
+  }
+}
+.base-button[data-disable="true"] {
+  cursor: not-allowed;
+  color: var(--font-disabled);
+  background: var(--btn-disable);
 }

@@ -14,11 +14,19 @@ body,
   &::-webkit-scrollbar {
     display: none;
   }
+
+  input::placeholder {
+    color: var(--font-placeholder-color) !important;
+  }
 }
 html[data-theme="default"] {
+  --font-disabled: rgba(255, 255, 255, 0.5);
+  --font-black: rgba(0, 0, 0);
   --font-color: rgba(255, 255, 255);
+  --font-placeholder-color: rgba(255, 255, 255, 0.5);
   --font-size: 14px;
   --font-weight: 400;
+  --head-action-color: #b7bdc8;
   --head-bg: #010409;
   --head-avatar: #fff;
   --head-border-bottom: #b7bdc8;
@@ -30,9 +38,20 @@ html[data-theme="default"] {
   --active-bg: #409eff;
   --font-color-second-title: #b7bdc8;
   --input-bg: #151b23;
+  --login-bg: #151b23;
+  --login-border: #3d444db3;
+  --btn-bg: #262c36;
+  --btn-border: #b7bdc8;
+  --btn-hover-bg: #36393d;
+  --btn-disable: #252d3a;
+  --green: #238636;
   --green-btn-bg: #006222;
   --green-btn-border: #4ae168;
   --green-btn-hover-bg: #08792b;
+  --code-bg: #2b2b2b;
+  --code-title-bg: rgb(25, 23, 28);
+  --orange: rgb(255, 165, 0);
+  --orange-btn-hover-bg: rgb(255, 191, 72);
 }
 .ant-input-outlined {
   background: var(--input-bg) !important;
@@ -45,7 +64,18 @@ html[data-theme="default"] {
     background: var(--input-bg);
   }
 }
-
-.anticon-close-circle {
-  color: var(--font-color);
+.ant-input-outlined.ant-input-disabled {
+  color: var(--font-disabled);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  opacity: 0.5;
+}
+::-webkit-scrollbar-thumb {
+  background: #909399ad;
+}
+::-webkit-scrollbar-track {
+  overflow: hidden;
+  width: 10px;
+  background-color: #9093995e;
 }

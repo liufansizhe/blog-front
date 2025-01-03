@@ -36,11 +36,11 @@ const Setting = () => {
       <div className='setting-body'>
         <div className='setting-aside'>
           <div className='setting-aside-head'>
-            <Avatar size={48} src={userInfo.avatar} />
+            <Avatar src={userInfo.avatar} />
             <div className='setting-aside-head-info'>
               <div>
                 {userInfo.nickName}
-                <span>({userInfo.account})</span>
+                <span>({userInfo.email})</span>
               </div>
               <div>你的个人账户</div>
             </div>
