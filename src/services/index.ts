@@ -39,7 +39,6 @@ const easyRequestInstance = new easyRequest({
   ],
   requestList: [
     { type: "post", url: "login", name: "Login" },
-    { type: "get", url: "getPublicKey", name: "getPublicKey" },
     { type: "get", url: "getUserInfo", name: "getUserInfo" },
     { type: "post", url: "register", name: "register" },
     { type: "post", url: "logout", name: "logout" },
@@ -52,7 +51,6 @@ const easyRequestInstance = new easyRequest({
 const apiList = easyRequestInstance.getApi();
 
 export const Login = apiList.Login;
-export const GetPublicKey = apiList.getPublicKey;
 export const Register = apiList.register;
 export const GetUserInfo = apiList.getUserInfo;
 export const Logout = apiList.logout;

@@ -5,10 +5,8 @@ import { useEffect } from "react";
 
 const ArticleList = () => {
   const init = async () => {
-    if (localStorage.token) {
-      const articleList = await GetHomeArticleList();
-      console.log("lfsz", articleList);
-    }
+    const articleList = await GetHomeArticleList();
+    console.log("lfsz", articleList);
   };
   useEffect(() => {
     init();

@@ -6,7 +6,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { GetUserInfo } from "@/services";
 
 // 定义初始化状态
-const initialState = { pubKey: "" };
+const initialState = {};
 // 创建切片
 const userInfoSlice = createSlice({
   // 切片名称
@@ -21,7 +21,7 @@ const userInfoSlice = createSlice({
       return state;
     },
     clear: (state) => {
-      state = { pubKey: state?.pubKey };
+      state = {};
       return state;
     },
   },

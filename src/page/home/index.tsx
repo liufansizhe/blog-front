@@ -1,7 +1,6 @@
 import "./index.scss";
 
-import { GetPublicKey, GetUserInfo } from "@/services";
-
+import { GetUserInfo } from "@/services";
 import Head from "@/components/Head";
 import LoginModal from "@/components/Modals/LoginModal/index";
 import { Outlet } from "react-router-dom";
@@ -12,9 +11,10 @@ import { useEffect } from "react";
 function App() {
   const dispatch = useDispatch();
   const init = async () => {
-    const { data } = await GetPublicKey();
-    const res = await GetUserInfo();
-    dispatch(update({ pubKey: data.pub_key, ...res?.data }));
+    if (localStorage.token) {
+      const res = await GetUserInfo();
+      dispatch(update({ ...res?.data }));
+    }
   };
   useEffect(() => {
     init();

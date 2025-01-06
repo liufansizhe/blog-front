@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRef, useState } from "react";
 
 import Button from "@/components/Button";
+import { PUB_KEY } from "@/utils/config";
 import _ from "lodash";
 import { encrypt } from "@/utils/encrypt";
 import { setVisible } from "@/store/action/modal";
@@ -24,7 +25,6 @@ const LoginModal = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const { loginModal } = useSelector((state: any) => state.modal);
-  const { pubKey } = useSelector((state: any) => state.userInfo);
   const dispatch = useDispatch();
   //重置弹窗
   const clearModal = () => {
@@ -48,7 +48,7 @@ const LoginModal = () => {
     }
     form.validateFields().then(async (res) => {
       const { email, password } = res;
-      const data = await encrypt(password, pubKey);
+      const data = await encrypt(password, PUB_KEY);
       const result = await Login({ email, password: data });
       if (result?.data?.token) {
         localStorage.token = result?.data?.token;
@@ -77,7 +77,7 @@ const LoginModal = () => {
     }
     form.validateFields().then(async (res) => {
       const { email, password, code } = res;
-      const data = await encrypt(password, pubKey);
+      const data = await encrypt(password, PUB_KEY);
       const result = await Register({ email, password: data, code });
       if (result.success) {
         messageApi.open({
