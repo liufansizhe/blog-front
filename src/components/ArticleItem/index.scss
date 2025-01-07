@@ -1,0 +1,34 @@
+.article-item {
+  border: 1px solid var(--font-color);
+  padding: 16px;
+  border-radius: 6px;
+  width: 100%;
+  &-head {
+    color: var(--article-title-color);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    .ant-avatar {
+      height: 20px;
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+  &-content {
+    margin-top: 4px;
+    font-size: 14px;
+  }
+  &-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    color: var(--font-color-second-title);
+    .icon {
+      font-size: 14px;
+      margin-right: 6px;
+    }
+    .dot {
+      margin: 0 8px;
+    }
+  }
+}

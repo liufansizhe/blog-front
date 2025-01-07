@@ -1,3 +1,9 @@
 .article-list {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  .article-body {
+    width: 50%;
+    padding: 20px 0;
+  }
 }

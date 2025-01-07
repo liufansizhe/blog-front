@@ -15,8 +15,11 @@ body,
     display: none;
   }
 
-  input::placeholder {
-    color: var(--font-placeholder-color) !important;
+  input,
+  textarea {
+    &::placeholder {
+      color: var(--font-placeholder-color) !important;
+    }
   }
 }
 html[data-theme="default"] {
@@ -52,6 +55,7 @@ html[data-theme="default"] {
   --code-title-bg: rgb(25, 23, 28);
   --orange: rgb(255, 165, 0);
   --orange-btn-hover-bg: rgb(255, 191, 72);
+  --article-title-color: #74b9ff;
 }
 .ant-input-outlined {
   background: var(--input-bg) !important;
@@ -66,6 +70,20 @@ html[data-theme="default"] {
 }
 .ant-input-outlined.ant-input-disabled {
   color: var(--font-disabled);
+}
+.ant-popover-inner {
+  background: var(--login-bg) !important;
+}
+.ant-popover-arrow {
+  &::before {
+    background: var(--login-bg) !important;
+  }
+}
+textarea {
+  resize: none !important;
+}
+.ant-input-data-count {
+  color: var(--font-color) !important;
 }
 ::-webkit-scrollbar {
   width: 10px;

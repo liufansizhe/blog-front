@@ -3,8 +3,8 @@ import "./index.scss";
 import { EmailPass, PasswordPass } from "@/utils/validate";
 import { Form, Input, Modal, message } from "antd";
 import { GetCode, GetUserInfo, Login, Register } from "@/services";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRef, useState } from "react";
 
 import Button from "@/components/Button";
 import { PUB_KEY } from "@/utils/config";
@@ -54,8 +54,7 @@ const LoginModal = () => {
         localStorage.token = result?.data?.token;
         const userInfo = await GetUserInfo();
         dispatch(update({ ...userInfo?.data }));
-        dispatch(setVisible({ type: "loginModal", value: false }));
-        form.resetFields();
+        closeHandle();
       }
     });
   };
@@ -136,6 +135,23 @@ const LoginModal = () => {
       }
     }, 1000);
   };
+  //键盘事件
+  const handleKeyDown = useCallback((e: { keyCode: number }) => {
+    if (e.keyCode == 13) {
+      if (isLogin) {
+        clickHandle();
+      } else {
+        registerHandle();
+      }
+    }
+  }, []);
+  useEffect(() => {
+    if (loginModal.isShow) {
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [loginModal.isShow]);
   return (
     <Modal
       className='login-modal'
