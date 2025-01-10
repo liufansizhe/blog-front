@@ -1,9 +1,15 @@
 .article-list {
-  height: 100%;
   display: flex;
   justify-content: center;
+  user-select: none;
   .article-body {
     width: 50%;
     padding: 20px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .article-item {
+      margin-bottom: 20px;
+    }
   }
 }

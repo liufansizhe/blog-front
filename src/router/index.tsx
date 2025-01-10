@@ -1,5 +1,6 @@
 import App from "@/page/home";
 import ArticleList from "@/page/articleList";
+import Detail from "@/page/articleDetail";
 import Profile from "@/page/setting/profile";
 import Setting from "@/page/setting";
 import Write from "@/page/write";
@@ -14,9 +15,11 @@ export const router = createBrowserRouter([
       {
         path: "/setting",
         element: <Setting />,
+        handle: { title: 123 },
         children: [{ index: true, element: <Profile /> }],
       },
       { path: "/write", element: <Write /> },
+      { path: "/detail/:id", element: <Detail /> },
     ],
   },
 ]);

@@ -46,6 +46,7 @@ const easyRequestInstance = new easyRequest({
     { type: "get", url: "getCode", name: "getCode" },
     { type: "post", url: "publishArticle", name: "publishArticle" },
     { type: "get", url: "getHomeArticleList", name: "getHomeArticleList" },
+    { type: "get", url: "getArticleDetail", name: "getArticleDetail" },
   ],
 });
 const apiList = easyRequestInstance.getApi();
@@ -58,3 +59,4 @@ export const SetUserInfo = apiList.setUserInfo;
 export const GetCode = apiList.getCode;
 export const PublishArticle = apiList.publishArticle;
 export const GetHomeArticleList = apiList.getHomeArticleList;
+export const GetArticleDetail = apiList.getArticleDetail;

@@ -1,0 +1,45 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  &-pre,
+  &-next {
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px;
+    margin: 0 4px;
+    &:hover {
+      background: var(--pagination-item-hover);
+    }
+  }
+  &-list {
+    display: flex;
+    align-items: center;
+  }
+  &-item,
+  .qote {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 4px 0 0;
+  }
+  &-active {
+    background: var(--pagination-item-bg);
+    &:hover {
+      background: var(--pagination-item-bg) !important;
+    }
+  }
+  &-item {
+    &:hover {
+      background: var(--pagination-item-hover);
+    }
+  }
+}

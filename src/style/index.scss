@@ -11,9 +11,6 @@ body,
     width: 1em;
   }
   color: var(--font-color);
-  &::-webkit-scrollbar {
-    display: none;
-  }
 
   input,
   textarea {
@@ -27,6 +24,7 @@ html[data-theme="default"] {
   --font-black: rgba(0, 0, 0);
   --font-color: rgba(255, 255, 255);
   --font-placeholder-color: rgba(255, 255, 255, 0.5);
+  --font-opacity-7:rgba(255, 255, 255, 0.7),
   --font-size: 14px;
   --font-weight: 400;
   --head-action-color: #b7bdc8;
@@ -52,10 +50,13 @@ html[data-theme="default"] {
   --green-btn-border: #4ae168;
   --green-btn-hover-bg: #08792b;
   --code-bg: #2b2b2b;
-  --code-title-bg: rgb(25, 23, 28);
+  --code-title-bg: #46395a;
   --orange: rgb(255, 165, 0);
   --orange-btn-hover-bg: rgb(255, 191, 72);
   --article-title-color: #74b9ff;
+  --pagination-item-bg: #194fb1;
+  --pagination-item-hover: #2f3742;
+  --markdown-bg: #181818;
 }
 .ant-input-outlined {
   background: var(--input-bg) !important;

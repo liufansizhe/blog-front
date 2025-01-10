@@ -20,20 +20,21 @@ import highlight from "@bytemd/plugin-highlight";
 import mediumZoom from "@bytemd/plugin-medium-zoom";
 import zhHans from "bytemd/locales/zh_Hans.json";
 
+export const plugins: any[] = [
+  breaks(),
+  gemoji(),
+  gfm({ locale: gfmZhHans }),
+  highlight(),
+  mediumZoom(),
+  alignPlugin(),
+  codeCopy(),
+];
 const Write = () => {
   const [form] = Form.useForm();
   const [value, setValue] = useState<string>("");
   const [showPop, setShowPop] = useState<boolean>(false);
   const titleRef = useRef<any>(null);
-  const plugins: any[] = [
-    breaks(),
-    gemoji(),
-    gfm({ locale: gfmZhHans }),
-    highlight(),
-    mediumZoom(),
-    alignPlugin(),
-    codeCopy(),
-  ];
+
   const onValueChange = (val: string) => {
     setValue(val);
   };

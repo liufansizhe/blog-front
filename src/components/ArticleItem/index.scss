@@ -3,15 +3,24 @@
   padding: 16px;
   border-radius: 6px;
   width: 100%;
+  box-sizing: border-box;
   &-head {
     color: var(--article-title-color);
     font-size: 16px;
     display: flex;
     align-items: center;
+
     .ant-avatar {
       height: 20px;
       width: 20px;
       margin-right: 10px;
+    }
+    .article-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 80%;
+      cursor: pointer;
     }
   }
   &-content {
