@@ -3,9 +3,9 @@ import "./index.scss";
 import { Avatar, Form, Input } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
+import Api from "@/services";
 import Button from "@/components/Button";
 import { NickNamePass } from "@/utils/validate";
-import { SetUserInfo } from "@/services";
 import { storeGetUserInfo } from "@/store/action/userInfo";
 import { useEffect } from "react";
 
@@ -17,7 +17,7 @@ const Profile = () => {
   const updateHandle = async () => {
     const form1 = await form.validateFields();
     const { bio } = await formBottom.getFieldsValue();
-    await SetUserInfo({ ...form1, bio });
+    await Api.SetUserInfo({ ...form1, bio });
     dispatch(storeGetUserInfo());
   };
   useEffect(() => {

@@ -2,9 +2,9 @@ import "./index.scss";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import Api from "@/services";
 import ArticleItem from "@/components/ArticleItem";
 import { ArticleListType } from "./type";
-import { GetHomeArticleList } from "@/services";
 import Pagination from "@/components/Pagination";
 import emptyGifUrl from "@/assets/gif/empty.gif";
 import loadingGifUrl from "@/assets/gif/loading.gif";
@@ -22,7 +22,7 @@ const ArticleList = () => {
     setLoading(true);
     const {
       data: { list, total },
-    } = await GetHomeArticleList({
+    } = await Api.GetHomeArticleList({
       pageSize: current.pageSize,
       pageIndex: current.pageIndex,
     });

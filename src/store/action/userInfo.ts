@@ -3,7 +3,7 @@
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { GetUserInfo } from "@/services";
+import Api from "@/services";
 
 // 定义初始化状态
 const initialState = {};
@@ -37,7 +37,7 @@ const userInfoSlice = createSlice({
 export const { update, clear } = userInfoSlice.actions;
 
 export const storeGetUserInfo = createAsyncThunk("fetch", async () => {
-  const { data } = await GetUserInfo();
+  const { data } = await Api.GetUserInfo();
   return data;
 });
 // 导出处理器

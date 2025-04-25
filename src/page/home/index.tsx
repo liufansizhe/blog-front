@@ -2,7 +2,7 @@ import "./index.scss";
 
 import { Outlet, useMatches } from "react-router-dom";
 
-import { GetUserInfo } from "@/services";
+import Api from "@/services";
 import Head from "@/components/Head";
 import LoginModal from "@/components/Modals/LoginModal/index";
 import { update } from "@/store/action/userInfo";
@@ -14,7 +14,7 @@ function App() {
   const matches = useMatches();
   const init = async () => {
     if (localStorage.token) {
-      const res = await GetUserInfo();
+      const res = await Api.GetUserInfo();
       dispatch(update({ ...res?.data }));
     }
   };

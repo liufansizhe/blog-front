@@ -5,13 +5,11 @@ import { Avatar } from "antd";
 import CollectIcon from "@/assets/svg/Collect.svg?react";
 import StarIcon from "@/assets/svg/Star.svg?react";
 import { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 
 export interface ArticleItemProps {
   info: ArticleListType;
 }
 const ArticleItem = (props: ArticleItemProps) => {
-  const navigate = useNavigate();
   const { info } = props;
   const updateTime = useMemo(() => {
     let duration = Math.ceil(

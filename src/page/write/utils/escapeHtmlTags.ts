@@ -6,8 +6,6 @@ export default function escapeHtmlTags(): BytemdPlugin {
     remark: (processor) =>
       processor.use(() => (treeNode: any) => {
         visit(treeNode, "html", (node) => {
-          console.log("lfsz", node);
-
           // 排除的标签列表
           const excludeTags = ["img", "br", "p", "text"];
 

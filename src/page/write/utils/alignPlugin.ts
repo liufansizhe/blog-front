@@ -42,8 +42,6 @@ export default function alignPlugin(): BytemdPlugin {
               handler: {
                 type: "action",
                 click: (ctx) => {
-                  console.log("lfsz", ctx);
-
                   ctx.wrapText('<p align="center">', "</p>");
                   ctx.editor.focus();
                 },

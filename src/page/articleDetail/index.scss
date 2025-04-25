@@ -13,6 +13,7 @@
     height: 100%;
     overflow: hidden;
     overflow-y: auto;
+    position: relative;
     &-head {
       padding-bottom: 20px;
       border-bottom: 1px dashed var(--font-placeholder-color);
@@ -33,5 +34,61 @@
         }
       }
     }
+    &-user {
+      position: fixed;
+      height: 200px;
+      width: 250px;
+      top: 84px;
+      right: 10%;
+      background: var(--markdown-bg);
+      border-radius: 6px;
+      animation: uerInfo 10s linear infinite;
+      box-sizing: border-box;
+      padding: 15px 20px;
+
+      .user-info {
+        display: flex;
+        align-items: self-start;
+        .ant-avatar {
+          height: 48px;
+          width: 48px;
+          border-radius: 6px;
+          margin-right: 10px;
+        }
+        .user-name-body span:first-child {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@keyframes uerInfo {
+  0% {
+    box-shadow: 0px 0px 10px 1px red;
+  }
+  10% {
+    box-shadow: 0px 0px 10px 1px yellow;
+  }
+  20% {
+    box-shadow: 0px 0px 10px 1px green;
+  }
+  35% {
+    box-shadow: 0px 0px 10px 1px blue;
+  }
+  50% {
+    box-shadow: 0px 0px 10px 1px purple;
+  }
+
+  65% {
+    box-shadow: 0px 0px 10px 1px blue;
+  }
+  80% {
+    box-shadow: 0px 0px 10px 1px green;
+  }
+  90% {
+    box-shadow: 0px 0px 10px 1px yellow;
+  }
+  100% {
+    box-shadow: 0px 0px 10px 1px red;
   }
 }

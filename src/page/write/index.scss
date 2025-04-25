@@ -61,3 +61,13 @@ $head: 64px;
 .publish-footer {
   margin-top: 40px;
 }
+.bytemd-fullscreen {
+  z-index: 2;
+}
+.cm-s-default .cm-header,
+.cm-link {
+  color: rgb(87, 87, 231) !important;
+}
+.cm-s-default .cm-string {
+  color: rgb(243, 116, 116);
+}

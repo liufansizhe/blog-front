@@ -6,10 +6,10 @@ import "highlight.js/styles/github-dark.css";
 import { Form, Input, Popover, message } from "antd";
 import { useRef, useState } from "react";
 
+import Api from "@/services";
 import Button from "@/components/Button";
 import CloseIcon from "@/assets/svg/Close.svg?react";
 import { Editor } from "@bytemd/react";
-import { PublishArticle } from "@/services";
 import alignPlugin from "./utils/alignPlugin";
 import breaks from "@bytemd/plugin-breaks";
 import codeCopy from "./utils/codePlugin";
@@ -51,7 +51,7 @@ const Write = () => {
         message.warning("文章内容不能为空");
         return;
       }
-      const res = await PublishArticle({ title, content: value, describe });
+      const res = await Api.PublishArticle({ title, content: value, describe });
       if (res.success) {
         message.success(res.message);
         closePop();

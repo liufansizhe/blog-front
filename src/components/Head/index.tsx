@@ -4,8 +4,8 @@ import { Avatar, Drawer, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 
 import AddIcon from "@/assets/svg/Add.svg?react";
+import Api from "@/services";
 import CloseIcon from "@/assets/svg/Close.svg?react";
-import { Logout } from "@/services";
 import MenuIcon from "@/assets/svg/Menu.svg?react";
 import MenuList from "../MenuList";
 import PersonIcon from "@/assets/svg/Person.svg?react";
@@ -14,11 +14,11 @@ import SignOutIcon from "@/assets/svg/SignOut.svg?react";
 import { UserOutlined } from "@ant-design/icons";
 import { clear } from "@/store/action/userInfo";
 import { setVisible } from "@/store/action/modal";
-import { useNavigate } from "react-router-dom";
+import useRouterHook from "@/hooks/useRouterHook";
 import { useState } from "react";
 
 const Head = () => {
-  const navigate = useNavigate();
+  const Router = useRouterHook();
   const [drawerType, setDrawerType] = useState<"left" | "right">("right");
   const [showDrawer, setShowDrawer] = useState<boolean>(false);
   const userInfo = useSelector((state: any) => state.userInfo);
@@ -42,7 +42,7 @@ const Head = () => {
     setShowDrawer(false);
   };
   const writeHandle = () => {
-    navigate("/write");
+    Router.push("/write");
   };
   const renderAction = () => {
     return localStorage.token ? (
@@ -58,7 +58,7 @@ const Head = () => {
               label: "个人简历",
               name: "profile",
               click: async () => {
-                //   navigate("/about");
+                Router.push("/cv");
                 setShowDrawer(false);
               },
               icon: <PersonIcon />,
@@ -69,7 +69,7 @@ const Head = () => {
               label: "设置",
               name: "setting",
               click: async () => {
-                navigate("/setting");
+                Router.push("/setting");
                 setShowDrawer(false);
               },
               icon: <SettingIcon />,
@@ -80,9 +80,9 @@ const Head = () => {
               label: "登出",
               name: "signOut",
               click: async () => {
-                const res = await Logout();
+                const res = await Api.Logout();
                 if (res.success) {
-                  navigate("/");
+                  Router.push("/");
                   messageApi.open({
                     type: "success",
                     content: "登出成功",
@@ -104,7 +104,7 @@ const Head = () => {
               label: "首页",
               name: "home",
               click: async () => {
-                navigate("/");
+                Router.push("/");
                 setShowDrawer(false);
               },
               icon: <PersonIcon />,

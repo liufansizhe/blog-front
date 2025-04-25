@@ -2,10 +2,10 @@ import "./index.scss";
 
 import { EmailPass, PasswordPass } from "@/utils/validate";
 import { Form, Input, Modal, message } from "antd";
-import { GetCode, GetUserInfo, Login, Register } from "@/services";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import Api from "@/services";
 import Button from "@/components/Button";
 import { PUB_KEY } from "@/utils/config";
 import _ from "lodash";
@@ -49,10 +49,10 @@ const LoginModal = () => {
     form.validateFields().then(async (res) => {
       const { email, password } = res;
       const data = await encrypt(password, PUB_KEY);
-      const result = await Login({ email, password: data });
+      const result = await Api.Login({ email, password: data });
       if (result?.data?.token) {
         localStorage.token = result?.data?.token;
-        const userInfo = await GetUserInfo();
+        const userInfo = await Api.GetUserInfo();
         dispatch(update({ ...userInfo?.data }));
         closeHandle();
       }
@@ -77,7 +77,7 @@ const LoginModal = () => {
     form.validateFields().then(async (res) => {
       const { email, password, code } = res;
       const data = await encrypt(password, PUB_KEY);
-      const result = await Register({ email, password: data, code });
+      const result = await Api.Register({ email, password: data, code });
       if (result.success) {
         messageApi.open({
           type: "success",
@@ -91,7 +91,7 @@ const LoginModal = () => {
   const getCodeHandle = _.debounce(
     async () => {
       const { email } = form.getFieldsValue();
-      const res = await GetCode({ email });
+      const res = await Api.GetCode({ email });
       if (res.success) {
         localStorage.setItem("codeTime", new Date().getTime() + "");
         setIn();

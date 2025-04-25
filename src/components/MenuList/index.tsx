@@ -14,10 +14,10 @@ export interface MenuListProps {
 }
 const MenuList = (props: MenuListProps) => {
   const { list, activeTab } = props;
-  const [avtiveItem, setAvtiveItem] = useState<string>("");
+  const [activeItem, setActiveItem] = useState<string>("");
   useEffect(() => {
     if (activeTab) {
-      setAvtiveItem(activeTab);
+      setActiveItem(activeTab);
     }
   }, [activeTab]);
   return (
@@ -30,7 +30,7 @@ const MenuList = (props: MenuListProps) => {
                 key={ele.name}
                 className='drawer-item'
                 onClick={ele.click}
-                data-active={avtiveItem == ele.name}
+                data-active={activeItem == ele.name}
               >
                 {ele.icon}
                 <span>{ele.label}</span>

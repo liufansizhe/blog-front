@@ -1,18 +1,21 @@
 import "./index.scss";
 
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { Avatar } from "antd";
 import MenuList from "@/components/MenuList";
 import PersonIcon from "@/assets/svg/Person.svg?react";
+import useRouterHook from "@/hooks/useRouterHook";
 import { useSelector } from "react-redux";
 
 const Setting = () => {
+  const Router = useRouterHook();
+
   const [activeTab, setActiveTab] = useState<string>("publicProfile");
   const userInfo = useSelector((state: any) => state.userInfo);
   const location = useLocation();
-  const navigate = useNavigate();
+
   const list = [
     [
       {
@@ -20,7 +23,7 @@ const Setting = () => {
         name: "profile",
         click: () => {
           setActiveTab("profile");
-          navigate("/setting");
+          Router.push("/setting");
         },
         icon: <PersonIcon />,
       },

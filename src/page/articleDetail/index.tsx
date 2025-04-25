@@ -5,8 +5,9 @@ import "./index.scss";
 
 import { useEffect, useMemo, useState } from "react";
 
+import Api from "@/services";
 import { ArticleType } from "./type";
-import { GetArticleDetail } from "@/services";
+import { Avatar } from "antd";
 import { Viewer } from "@bytemd/react";
 import moment from "moment";
 import { plugins } from "../write";
@@ -17,7 +18,7 @@ const ArticleDetail = () => {
   const [info, setInfo] = useState<ArticleType>({ content: "" });
 
   const init = async () => {
-    const { data, success } = (await GetArticleDetail({ id })) ?? {};
+    const { data, success } = (await Api.GetArticleDetail({ id })) ?? {};
     if (success) {
       setInfo(data);
     }
@@ -34,11 +35,19 @@ const ArticleDetail = () => {
         <div className='article-detail-body-head'>
           <div className='title'>{info?.title}</div>
           <div className='info'>
-            <span className='name'> {info.userName}</span>
-            <span className='time'>{time}</span>
+            <span className='name'> 作者：{info.userName}</span>
+            <span className='time'>更新日期：{time}</span>
           </div>
         </div>
         <Viewer value={info.content} plugins={plugins} />
+        <div className='article-detail-body-user'>
+          <div className='user-info'>
+            <Avatar src={info.userAvatar} />
+            <div className='user-name-body'>
+              <span>{info.userName}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
